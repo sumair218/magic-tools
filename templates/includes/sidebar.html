@@ -1,0 +1,93 @@
+{% load static %}
+
+<div class="sidebar">
+
+    <div class="p-3 text-center">
+
+        <a href="{% url 'dashboard' %}" class="d-inline-block mb-2">
+            <img src="{% static 'img/logo.png' %}"
+                 width="60"
+                 height="60"
+                 class="img-fluid"
+                 alt="MagicTools logo">
+        </a>
+
+        <h4 class="mt-2">MagicTools</h4>
+
+    </div>
+
+    {% if request.user.is_authenticated %}
+        <div class="p-3 text-center border-top border-bottom mb-3">
+            <a href="{% url 'profile' %}" class="d-inline-block mb-2">
+                {% if user_profile.profile_image %}
+                    <img src="{{ user_profile.profile_image.url }}"
+                         width="60"
+                         height="60"
+                         class="rounded-circle"
+                         alt="Profile image">
+                {% else %}
+                    <div class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center"
+                         style="width:60px;height:60px;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                {% endif %}
+            </a>
+
+            <h6 class="mt-2 mb-1">{{ request.user.username }}</h6>
+            <small class="text-muted">
+                {{ user_profile.is_premium|yesno:'Premium,Free' }} Plan
+            </small>
+        </div>
+    {% endif %}
+
+    <hr>
+
+    <!-- Dashboard -->
+    <a href="{% url 'dashboard' %}" class="sidebar-link">
+        <i class="bi bi-grid"></i>
+        Dashboard
+    </a>
+
+    <!-- PDF Tools -->
+    <a href="{% url 'pdf_home' %}" class="sidebar-link">
+        <i class="bi bi-file-earmark-pdf"></i>
+        PDF Tools
+    </a>
+
+    <!-- Image Tools -->
+    <a href="{% url 'image_home' %}" class="sidebar-link">
+        <i class="bi bi-images"></i>
+        Image Tools
+    </a>
+
+    <!-- OCR Tools -->
+    <a href="{% url 'ocr_home' %}" class="sidebar-link">
+        <i class="bi bi-camera"></i>
+        OCR Tools
+    </a>
+
+    <!-- Video Tools -->
+    <a href="{% url 'video_home' %}" class="sidebar-link">
+        <i class="bi bi-youtube"></i>
+        YouTube Downloader
+    </a>
+
+    <!-- Social Tools -->
+    <a href="{% url 'social_downloader' %}" class="sidebar-link">
+        <i class="bi bi-instagram"></i>
+        Social Downloader
+    </a>
+
+    <!-- AI Tools -->
+    <a href="{% url 'ai_home' %}" class="sidebar-link">
+        <i class="bi bi-stars"></i>
+        AI Tools
+    </a>
+
+    <!-- History -->
+    <a href="{% url 'history' %}" class="sidebar-link">
+        <i class="bi bi-clock-history"></i>
+        History
+    </a>
+
+</div>

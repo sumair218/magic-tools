@@ -1,0 +1,254 @@
+﻿:root {
+  --brand-orange: #f15a24;
+  --brand-orange-soft: rgba(241, 82, 36, 0.12);
+  --brand-red: #d9391b;
+  --brand-red-soft: rgba(217, 57, 27, 0.14);
+  --brand-dark: #1f1f29;
+  --brand-muted: #6c757d;
+  --brand-soft: #fdf7f2;
+}
+
+body {
+  background: #f7f8fc;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #eee;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.main-content {
+  margin-left: 260px;
+  transition: margin 0.3s ease;
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 9;
+}
+
+.sidebar-active {
+  transform: translateX(0) !important;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  margin: 5px 10px;
+}
+
+.sidebar-link:hover {
+  background: #f1f5ff;
+  color: #0d6efd;
+}
+
+.btn-primary {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #d4431f;
+  border-color: #d4431f;
+}
+
+.btn-outline-secondary {
+  color: var(--brand-dark);
+  border-color: rgba(31, 31, 31, 0.15);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background: var(--brand-orange-soft);
+  border-color: var(--brand-orange);
+}
+
+  .sidebar-link i,
+  .sidebar-link .bi {
+    color: #f15a24;
+  }
+
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.tool-card .card-body {
+  min-height: 220px;
+}
+
+.tool-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1.15rem;
+  background: var(--brand-orange-soft);
+  color: #f15a24;
+  font-size: 1.75rem;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.tool-icon i {
+  color: #f15a24;
+}
+
+.tool-card:hover .tool-icon {
+  transform: scale(1.08);
+  background: rgba(241, 82, 36, 0.16);
+  color: #f15a24;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+}
+
+.tool-card:hover h5 {
+  color: var(--brand-dark);
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, rgba(241,82,36,0.98) 0%, rgba(255,123,68,0.94) 100%);
+  color: #fff;
+}
+
+.bg-soft-brand {
+  background: var(--brand-orange-soft);
+}
+
+.text-brand-orange {
+  color: var(--brand-orange) !important;
+}
+
+.card.form-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.card.form-card .card-body {
+  padding: 2rem;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    position: fixed;
+    width: 260px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    border-right: 1px solid #eee;
+    border-bottom: none;
+    background: #fff;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .sidebar.sidebar-active {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9;
+  }
+
+  .sidebar-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .navbar .container-fluid {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .navbar form {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .navbar .d-flex.align-items-center {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sidebar {
+    padding-bottom: 1rem;
+  }
+
+  .sidebar-link {
+    padding: 10px 16px;
+    margin: 4px 8px;
+    font-size: 0.95rem;
+  }
+
+  .sidebar-link i {
+    font-size: 1.1rem;
+  }
+
+  .tool-card .card-body {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .tool-icon {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: 1.5rem;
+  }
+
+  .tool-card h5 {
+    font-size: 1.05rem;
+  }
+
+  .tool-card p {
+    font-size: 0.95rem;
+  }
+
+  .card.form-card .card-body {
+    padding: 1.5rem;
+  }
+}

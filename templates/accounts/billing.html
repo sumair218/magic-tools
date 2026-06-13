@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h2 class="mb-3">Choose your plan</h2>
+                    <p class="text-muted mb-4">
+                        Your account is ready. Pick the free plan or upgrade to a limited premium plan now.
+                    </p>
+
+                    <div class="row gy-3">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-primary">
+                                <div class="card-body">
+                                    <h4 class="card-title">Free Plan</h4>
+                                    <p class="card-text text-muted">
+                                        Start using MagicTools with essential access at no cost.
+                                    </p>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="plan" value="free">
+                                        <button type="submit" class="btn btn-outline-primary w-100">
+                                            Continue for Free
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-warning">
+                                <div class="card-body">
+                                    <h4 class="card-title">Limited Premium</h4>
+                                    <p class="card-text text-muted">
+                                        Get premium features with a low-cost limited plan and unlock more tools.
+                                    </p>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="plan" value="premium">
+                                        <button type="submit" class="btn btn-warning w-100">
+                                            Select Premium
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-muted">
+                        You can always change your plan later from your profile.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

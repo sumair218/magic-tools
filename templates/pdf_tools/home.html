@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold mb-3 text-dark">PDF Tools</h2>
+                <p class="mb-4 text-muted">
+                    Use the tools below to convert, merge, split, and compress PDFs with real file uploads.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <a href="{% url 'pdf_to_word' %}" class="card h-100 tool-card text-decoration-none text-dark">
+                        <div class="card-body text-center">
+                            <div class="tool-icon mb-3 bg-soft-brand text-brand-orange">
+                                <i class="bi bi-file-earmark-arrow-up-fill"></i>
+                            </div>
+                            <h5 class="mt-3">PDF to Word</h5>
+                            <p class="text-muted">Convert PDF files into editable Word documents.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <a href="{% url 'word_to_pdf' %}" class="card h-100 tool-card text-decoration-none text-dark">
+                        <div class="card-body text-center">
+                            <div class="tool-icon mb-3 bg-soft-brand text-brand-orange">
+                                <i class="bi bi-filetype-docx"></i>
+                            </div>
+                            <h5 class="mt-3">Word to PDF</h5>
+                            <p class="text-muted">Convert DOCX files into PDF documents.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <a href="{% url 'merge_pdf' %}" class="card h-100 tool-card text-decoration-none text-dark">
+                        <div class="card-body text-center">
+                            <div class="tool-icon mb-3 bg-soft-brand text-brand-orange">
+                                <i class="bi bi-files"></i>
+                            </div>
+                            <h5 class="mt-3">Merge PDF</h5>
+                            <p class="text-muted">Combine multiple PDF files into one document.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <a href="{% url 'split_pdf' %}" class="card h-100 tool-card text-decoration-none text-dark">
+                        <div class="card-body text-center">
+                            <div class="tool-icon mb-3 bg-soft-brand text-brand-orange">
+                                <i class="bi bi-scissors"></i>
+                            </div>
+                            <h5 class="mt-3">Split PDF</h5>
+                            <p class="text-muted">Extract specific pages from a PDF file.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <a href="{% url 'compress_pdf' %}" class="card h-100 tool-card text-decoration-none text-dark">
+                        <div class="card-body text-center">
+                            <div class="tool-icon mb-3 bg-soft-brand text-brand-orange">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h5 class="mt-3">Compress PDF</h5>
+                            <p class="text-muted">Optimize PDF size while keeping the document intact.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

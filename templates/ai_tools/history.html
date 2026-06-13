@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+                <h4>AI History</h4>
+                {% if ai_history %}
+                    <div class="list-group">
+                        {% for item in ai_history %}
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">{{ item.created_at|date:'M d, Y H:i' }}</small>
+                                    <span class="badge bg-secondary">AI</span>
+                                </div>
+                                <p class="mb-1"><strong>Prompt:</strong> {{ item.prompt }}</p>
+                                <p class="mb-0"><strong>Response:</strong> {{ item.response }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No AI history available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+                <h4>Download History</h4>
+                {% if video_history %}
+                    <div class="list-group">
+                        {% for item in video_history %}
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">{{ item.created_at|date:'M d, Y H:i' }}</small>
+                                    <span class="badge bg-primary">{{ item.platform }}</span>
+                                </div>
+                                <p class="mb-1"><strong>URL:</strong> <a href="{{ item.url }}" target="_blank">{{ item.url }}</a></p>
+                                <p class="mb-0"><strong>File:</strong> <a href="{{ item.downloaded_file.url }}" target="_blank">{{ item.downloaded_file.name|slice:':40' }}</a></p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No download history available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

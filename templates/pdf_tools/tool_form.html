@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 form-card">
+                <div class="card-body">
+                    <h2 class="fw-bold mb-3 text-dark">{{ tool_name }}</h2>
+                    <p class="text-muted mb-4">{{ tool_description }}</p>
+
+                    {% if messages %}
+                        <div class="mb-3">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        {% for field in form %}
+                            <div class="mb-3">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
+                        {% endfor %}
+
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+
+                    {% if download_url %}
+                        <div class="alert alert-success mt-4">
+                            <p class="mb-2">Conversion completed. Download your file below:</p>
+                            <a href="{{ download_url }}" class="btn btn-outline-success">Download {{ download_name }}</a>
+                        </div>
+                    {% endif %}
+
+                    <a href="{% url 'pdf_home' %}" class="btn btn-link mt-4">Back to PDF Tools</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

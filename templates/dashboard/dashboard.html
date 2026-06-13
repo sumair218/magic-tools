@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-body">
+
+                <h3>
+                    Welcome,
+                    {{ request.user.username }}
+                </h3>
+
+                <p>
+                    Convert PDFs, Images, Videos and more.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- TOOL CARDS -->
+<div class="row mt-4">
+
+    <div class="col-12 col-sm-6 col-md-3 mb-3">
+
+        <a href="{% url 'word_to_pdf' %}" class="text-decoration-none text-dark">
+
+            <div class="card tool-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-file-earmark-word fs-1"></i>
+
+                    <h5 class="mt-3">
+                        Word → PDF
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3 mb-3">
+
+        <a href="{% url 'pdf_to_word' %}" class="text-decoration-none text-dark">
+
+            <div class="card tool-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-file-earmark-pdf fs-1"></i>
+
+                    <h5 class="mt-3">
+                        PDF → Word
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3 mb-3">
+
+        <a href="{% url 'split_pdf' %}" class="text-decoration-none text-dark">
+
+            <div class="card tool-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-scissors fs-1"></i>
+
+                    <h5 class="mt-3">
+                        Split PDF
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3 mb-3">
+
+        <a href="{% url 'merge_pdf' %}" class="text-decoration-none text-dark">
+
+            <div class="card tool-card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-files fs-1"></i>
+
+                    <h5 class="mt-3">
+                        Merge PDF
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- RECENT + UPGRADE -->
+<div class="row mt-4">
+
+    <div class="col-12 col-lg-8 mb-3">
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-body">
+
+                <h5>
+                    Recent Files
+                </h5>
+
+                    <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>File</th>
+                                <th>Tool</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>resume.pdf</td>
+                                <td>PDF to Word</td>
+                                <td>Today</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4 mb-3">
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-body">
+
+                <h5>
+                    Upgrade to Pro
+                </h5>
+
+                <p>
+                    Unlimited conversions, OCR and AI features.
+                </p>
+
+                <div class="d-grid gap-2">
+                    <a href="{% url 'plan' %}" class="btn btn-primary w-100">
+                        Billing
+                    </a>
+                    <a href="{% url 'plan' %}" class="btn btn-outline-secondary w-100">
+                        Manage Plan
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

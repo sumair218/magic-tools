@@ -9,7 +9,10 @@ SECRET_KEY = 'django-insecure-change-this-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://magic-tools.railway.app"]
+ALLOWED_HOSTS = [
+    "magic-tools-production.up.railway.app",
+    ".railway.app",
+]
 
 # --------------------------------------------------
 # INSTALLED APPS

@@ -5,13 +5,20 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
-SECRET_KEY = 'django-insecure-change-this-secret-key'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-secret-key')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     "magic-tools-production.up.railway.app",
     ".railway.app",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://magic-tools-production.up.railway.app",
+    "https://*.railway.app",
 ]
 
 # --------------------------------------------------
@@ -25,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
 
     # Custom Apps
     'accounts',
@@ -45,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -141,6 +150,15 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 # --------------------------------------------------
 # MEDIA FILES
